@@ -7,10 +7,11 @@ Services are low-level modules which handle a specific set of data. Many service
 ## Templates
 
 Structure of a `Template`:
+
 ```json5
 {
     "id": number,           // number – unique identifier of template
-    "updated": string,      // string – timestamp of last update
+    "updated": number,      // number – UNIX timestamp of last update
     "title": string,        // string – human readable identifier of template
     "content": string,      // string – content of template
     "lang": string,         // string ["en", "de"] – defined for which language the template is for

@@ -12,14 +12,15 @@ You will find the mockups, specifications and other resources you need to comple
 -   Table component is usable as a React component
 -   Template list page is implemented
 -   Template edit page has implemented styles
+-   Each part of the project has automated tests
 
-**Overall goal:** Each part of the project has automated tests.
+Please refer to the [specifications](./resources/specifications.md) in case of doubts. If something is not clear enough, please take any decision in order to advance and document it.
 
 _Note: The CSS doesn't have to be pixel perfect_
 
 ### State management and data fetching is handled with Redux
 
-As we have to think about this project as a part of a bigger application which uses Redux, the whole state management and data fetching has to be handled through Redux actions and reducers. For handlind the asynchronous parts of the logic, you can use libraries you may like.
+As we have to think about this project as a part of a bigger application which uses Redux, the whole state management and data fetching has to be handled through Redux actions and reducers. For handling the asynchronous parts of the logic, you can use libraries you may like.
 
 Please, use the `templates` service for simulating a backend call. You can find the documentation of the endpoints in [services](src/services) folder.
 

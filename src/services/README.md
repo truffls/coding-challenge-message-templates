@@ -1,6 +1,6 @@
 # Services
 
-Services are low-level modules which handle a specific set of data. Many services are an simple interface for an API.
+Services are low-level modules which handle a specific set of data. Many services are a simple interface for an API.
 
 **Note: Services which are defined in here might mock data to not depend on a remote API.**
 
@@ -10,7 +10,7 @@ Structure of a `Template`:
 ```json5
 {
     "id": number,           // number – unique identifier of template
-    "updated": number,      // number – timestamp of last update
+    "updated": string,      // string – timestamp of last update
     "title": string,        // string – human readable identifier of template
     "content": string,      // string – content of template
     "lang": string,         // string ["en", "de"] – defined for which language the template is for
@@ -18,7 +18,7 @@ Structure of a `Template`:
 }
 ```
 
-In the case of an error the different functions return an object which bases on [JSON-API errors](https://jsonapi.org/format/#errors-processing).
+In the case of an error, the different functions return an object which bases on [JSON-API errors](https://jsonapi.org/format/#errors-processing).
 
 
 
@@ -28,7 +28,7 @@ In the case of an error the different functions return an object which bases on 
 
 **Returns:** `Object`
 
-```json
+```json5
 {
     "count": number,
     "results": Template[]
@@ -44,6 +44,7 @@ In the case of an error the different functions return an object which bases on 
 **Arguments:**
 
 * `data`: `Object`
+
     ```json5
     {
         "title": string,        // string – required
@@ -71,12 +72,13 @@ Arguments
 
 ### `updateTemplate`
 
-> Updates the existing template identified by the given ID. The properties of an template are optional for updating. New properties will be merged into the set of properties.
+> Updates the existing template identified by the given ID. The properties of a template are optional for updating. New properties will be merged into the set of properties.
 
 **Arguments:**
 
 * `id`: `number`
 * `data`: `Object`
+
   ```json5
     {
         "title": string,        // string – optional

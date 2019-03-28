@@ -24,7 +24,7 @@ As we have to think about this project as a part of a bigger application which u
 
 Please, use the `templates` service for simulating a backend call. You can find the documentation of the endpoints in [services](src/services) folder.
 
-### Table component is usable as an React component
+### Table component is usable as a React component
 
 We have provided you with the CSS of our table component. Please implement the required React component(s) to later use it in the task "Template list page is implemented". If you want to change the CSS structure, please do so.
 

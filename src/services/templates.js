@@ -22,16 +22,18 @@ let nextId = 3;
 function getTemplates() {
     const templates = Object.keys(store).map((id) => store[id]);
 
-    return createResponse(200, {
-        count: templates.length,
-        results: templates
-    });
+    return Promise.resolve(
+        createResponse(200, {
+            count: templates.length,
+            results: templates
+        })
+    );
 }
 
 function createTemplate(data) {
     const error = runValidation(data, true);
     if (!!error) {
-        return error;
+        return Promise.reject(error);
     }
 
     const id = nextId++;
@@ -45,43 +47,47 @@ function createTemplate(data) {
         active
     };
 
-    return createResponse(201, store[id]);
+    return Promise.resolve(
+        createResponse(201, store[id])
+    );
 }
 
 function getTemplate(id) {
     if (typeof store[id] !== 'object') {
-        return createResponse(404, {
-            "errors": [
+        return Promise.reject(
+            createErrorResponse(404, [
                 {
                     "status": 404,
                     "code": "18000",
                     "title": "Not found",
                     "detail": "Not found."
                 }
-            ]
-        });
+            ])
+        );
     }
 
-    return createResponse(200, store[id]);
+    return Promise.resolve(
+        createResponse(200, store[id])
+    );
 }
 
 function updateTemplate(id, data) {
     if (typeof store[id] !== 'object') {
-        return createResponse(404, {
-            "errors": [
+        return Promise.reject(
+            createErrorResponse(404, [
                 {
                     "status": 404,
                     "code": "18000",
                     "title": "Not found",
                     "detail": "Not found."
                 }
-            ]
-        });
+            ])
+        );
     }
 
     const error = runValidation(data, false);
     if (!!error) {
-        return error;
+        return Promise.reject(error);
     }
 
     const updated = Date.now();
@@ -92,26 +98,30 @@ function updateTemplate(id, data) {
         updated
     };
 
-    return createResponse(200, store[id]);
+    return Promise.resolve(
+        createResponse(200, store[id])
+    );
 }
 
 function deleteTemplate(id) {
     if (typeof store[id] !== 'object') {
-        return createResponse(404, {
-            "errors": [
+        return Promise.reject(
+            createErrorResponse(404, [
                 {
                     "status": 404,
                     "code": "18000",
                     "title": "Not found",
                     "detail": "Not found."
                 }
-            ]
-        });
+            ])
+        );
     }
 
     delete store[id];
 
-    return createResponse(204);
+    return Promise.resolve(
+        createResponse(204)
+    );
 }
 
 module.exports = {
